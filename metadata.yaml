@@ -1,6 +1,5 @@
-metadata:
-  name: astrbot_plugin_tokens
-  desc: 拦截每次 LLM 请求，统计各部分 token 占用（系统提示/对话历史/工具定义/插件注入），一键找出 token 胖头鱼
-  version: 1.0.0
-  author: Anrrow
-  repo: https://github.com/anrrow/astrbot_plugin_tokens
+name: astrbot_plugin_token_inspector
+desc: 拦截每次 LLM 请求，统计各部分 token 占用
+version: 1.0.0
+author: Anrrow
+repo: https://github.com/anrrow2002-ctrl/astrbot_plugin_token_inspector
