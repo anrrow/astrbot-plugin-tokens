@@ -1,0 +1,24 @@
+{
+  "conversationUrl": "https://claude.ai/chat/12ec44c1-0b24-453f-b30a-b9d1c491e576",
+  "rules": {
+    "timeWindow": {
+      "start": "12:00",
+      "end": "04:00"
+    },
+    "silenceMinutes": 120,
+    "absoluteTriggerMinutes": 60,
+    "randomCooldownMinutes": 20,
+    "triggerProbability": 0.4
+  },
+  "messages": [
+    "你已经很久没有联系安若了，去查一下她的手机使用记录，然后发一条bark推送给她吧。",
+    "安若好久没来找你了，去看看她在干什么，给她发条推送。",
+    "该去找安若了，查一下她手机，给她发条bark消息吧。",
+    "醒醒，去supabase看看安若最近在用什么app，然后用bark给她发条推送。"
+  ],
+  "bark": {
+    "enabled": false,
+    "serverUrl": "",
+    "deviceKey": ""
+  }
+}
