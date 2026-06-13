@@ -1,24 +1,92 @@
 {
-  "conversationUrl": "https://claude.ai/chat/12ec44c1-0b24-453f-b30a-b9d1c491e576",
-  "rules": {
-    "timeWindow": {
-      "start": "12:00",
-      "end": "04:00"
-    },
-    "silenceMinutes": 120,
-    "absoluteTriggerMinutes": 60,
-    "randomCooldownMinutes": 20,
-    "triggerProbability": 0.4
+  "warning_enabled": {
+    "description": "启用 token 超限自动预警",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后，超过 warning_threshold 会在当前 QQ/聊天会话自动发送提醒。"
   },
-  "messages": [
-    "你已经很久没有联系安若了，去查一下她的手机使用记录，然后发一条bark推送给她吧。",
-    "安若好久没来找你了，去看看她在干什么，给她发条推送。",
-    "该去找安若了，查一下她手机，给她发条bark消息吧。",
-    "醒醒，去supabase看看安若最近在用什么app，然后用bark给她发条推送。"
-  ],
-  "bark": {
-    "enabled": false,
-    "serverUrl": "",
-    "deviceKey": ""
+  "warning_threshold": {
+    "description": "总 token 预警阈值",
+    "type": "int",
+    "default": 100000,
+    "hint": "默认 100,000。超过后提示：Token 已超过 100,000，请检查。"
+  },
+  "warning_cooldown_seconds": {
+    "description": "同一会话预警冷却秒数",
+    "type": "int",
+    "default": 600,
+    "hint": "防止每轮都刷屏；设为 0 表示不冷却。"
+  },
+  "history_size": {
+    "description": "每个会话保留多少条历史统计",
+    "type": "int",
+    "default": 80,
+    "hint": "只保存在插件内存中，重启后清空。"
+  },
+  "top_items_limit": {
+    "description": "最大嫌疑排行保留数量",
+    "type": "int",
+    "default": 12
+  },
+  "preview_chars": {
+    "description": "预览文本长度",
+    "type": "int",
+    "default": 160,
+    "hint": "用于 /token_top 和自动预警，避免把整段上下文打出来。"
+  },
+  "show_preview_in_warning": {
+    "description": "预警消息里显示最大来源预览",
+    "type": "bool",
+    "default": true,
+    "hint": "如果担心群里暴露上下文内容，可以关闭。"
+  },
+  "show_diagnosis_after_warning": {
+    "description": "预警消息里显示处理建议",
+    "type": "bool",
+    "default": true
+  },
+  "tool_definition_warn_threshold": {
+    "description": "工具定义单独诊断阈值",
+    "type": "int",
+    "default": 10000,
+    "hint": "Agent/MCP/插件工具 schema 超过该值时，/token_why 会提示优先检查工具定义。"
+  },
+  "extra_parts_warn_threshold": {
+    "description": "插件注入单独诊断阈值",
+    "type": "int",
+    "default": 8000,
+    "hint": "世界书、状态栏、长期记忆等 extra_user_content_parts 过大时会提示。"
+  },
+  "history_warn_threshold": {
+    "description": "历史上下文单独诊断阈值",
+    "type": "int",
+    "default": 40000
+  },
+  "auto_trim_enabled": {
+    "description": "实验功能：超限时自动裁剪最早的历史上下文",
+    "type": "bool",
+    "default": false,
+    "hint": "默认关闭。开启后会修改 req.contexts，只裁剪历史，不动 system_prompt、当前输入、工具定义和插件注入。"
+  },
+  "auto_trim_threshold": {
+    "description": "自动裁剪触发阈值",
+    "type": "int",
+    "default": 120000
+  },
+  "auto_trim_target": {
+    "description": "自动裁剪目标 token",
+    "type": "int",
+    "default": 90000
+  },
+  "auto_trim_keep_recent_contexts": {
+    "description": "自动裁剪时保留最近多少条历史",
+    "type": "int",
+    "default": 12,
+    "hint": "防止把最近剧情/任务裁掉。"
+  },
+  "notify_on_auto_trim": {
+    "description": "自动裁剪后是否在预警中提示",
+    "type": "bool",
+    "default": true
   }
 }

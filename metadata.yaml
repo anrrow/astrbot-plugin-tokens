@@ -1,5 +1,5 @@
 name: astrbot_plugin_token_inspector
-desc: 拦截每次 LLM 请求，统计各部分 token 占用
-version: 1.0.0
-author: Anrrow
-repo: https://github.com/anrrow2002-ctrl/astrbot_plugin_token_inspector
+desc: Token 用量诊断插件：定位 token 来源、自动预警、QQ 指令诊断、可选历史裁剪
+version: 1.2.0
+author: Anrrow / optimized by ChatGPT
+repo: https://github.com/anrrow/astrbot-plugin-tokens
